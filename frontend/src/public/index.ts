@@ -8,6 +8,7 @@ import GIFT from "./gift.png"
 import CARD from "./card.png"
 import DOLLAR from "./dollar.png"
 import LOCK from "./lock.png"
+import LOGO from "./logo.png"
 
 export{
     PHONE,
@@ -19,5 +20,6 @@ export{
     GIFT,
     CARD,
     DOLLAR,
-    LOCK
+    LOCK,
+    LOGO
 }

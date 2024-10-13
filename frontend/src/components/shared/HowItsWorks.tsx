@@ -1,27 +1,38 @@
-"use client"
-import React, { useEffect, useRef } from 'react';
-import { motion, useInView, useAnimation } from 'framer-motion';
+"use client";
+import React, { useEffect, useRef, RefObject } from "react";
+import { motion, useInView, useAnimation, AnimationControls } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { ARROW, CASH, PLAYSTORE, TROPHY, WALLET } from '@/public';
-import Image from 'next/image';
+import { ARROW, CASH, PLAYSTORE, TROPHY, WALLET } from "@/public";
+import Image, { StaticImageData } from "next/image";
 
-const steps = [
-  { icon: PLAYSTORE, title: 'Signup on Paycasso', color: "#B83030" },
-  { icon: WALLET, title: 'Top-up your wallet', color: "#C7F47E" },
-  { icon: CASH, title: 'Make a payment', color: "#699FF0" },
-  { icon: TROPHY, title: 'Earn Rewards', color: "#FFA756" },
+type Step = {
+  icon: StaticImageData;
+  title: string;
+  color: string;
+};
+
+type StepCardProps = Step & {
+  index: number;
+  isLast: boolean;
+};
+
+const steps: Step[] = [
+  { icon: PLAYSTORE, title: "Signup on Paycasso", color: "#B83030" },
+  { icon: WALLET, title: "Top-up your wallet", color: "#C7F47E" },
+  { icon: CASH, title: "Make a payment", color: "#699FF0" },
+  { icon: TROPHY, title: "Earn Rewards", color: "#FFA756" },
 ];
 
-const StepCard = ({ icon, title, color, index, isLast }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.5 });
-  const controls = useAnimation();
+const StepCard: React.FC<StepCardProps> = ({ icon, title, color, index, isLast }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(ref as RefObject<Element>, { once: false, amount: 0.5 });
+  const controls: AnimationControls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
-      controls.start('visible');
+      controls.start("visible");
     } else {
-      controls.start('hidden');
+      controls.start("hidden");
     }
   }, [isInView, controls]);
 
@@ -37,23 +48,26 @@ const StepCard = ({ icon, title, color, index, isLast }) => {
       className="flex space-x-5 justify-center items-center"
     >
       <div className="flex flex-col items-center">
-        <Card className={`w-20 h-20 border-none shadow-lg rounded-2xl overflow-hidden`} style={{ backgroundColor: color }}>
+        <Card
+          className="w-20 h-20 border-none shadow-lg rounded-2xl overflow-hidden"
+          style={{ backgroundColor: color }}
+        >
           <CardContent className="p-0 flex items-center justify-center h-full">
-            <Image src={icon} alt='icon' className='w-8' />
+            <Image src={icon} alt="icon" className="w-8" />
           </CardContent>
         </Card>
         <p className="mt-4 text-white text-center text-sm">{title}</p>
       </div>
       {!isLast && (
         <div className="hidden md:block w-full mt-4">
-          <Image src={ARROW} alt='arrow' className='w-36 h-2 mb-16' />
+          <Image src={ARROW} alt="arrow" className="w-36 h-2 mb-16" />
         </div>
       )}
     </motion.div>
   );
 };
 
-const HowItWorks = () => {
+const HowItWorks: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8">
       <motion.h2
@@ -76,7 +90,7 @@ const HowItWorks = () => {
             />
             {index % 2 === 0 && index !== steps.length - 1 && (
               <div className="md:hidden w-full flex justify-center items-center">
-                <Image src={ARROW} alt='arrow' className='w-8 h-24 transform rotate-90' />
+                <Image src={ARROW} alt="arrow" className="w-8 h-24 transform rotate-90" />
               </div>
             )}
           </React.Fragment>
