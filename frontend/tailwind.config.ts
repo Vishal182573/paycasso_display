@@ -66,6 +66,14 @@ const config: Config = {
         'gradient-dark': 'linear-gradient(to bottom right, #080810, #1f203e)',
         'gradient-dark-tr': 'linear-gradient(to top right, #080810, #1f203e)',
         'gradient-dark-radial': 'radial-gradient(circle at center, #1f203e, #080810)',
+        'gradient-1': 'linear-gradient(180deg, #000571 0%, #003C44 100%)',
+        'gradient-2': 'linear-gradient(180deg, #241919 0%, #340054 53.85%)',
+        'gradient-3': 'linear-gradient(180deg, #070A4E 0%, #2082B9 100%)',
+        'gradient-4': 'linear-gradient(180deg, #241919 0%, #340054 100%)',
+        'gradient-5': 'linear-gradient(180deg, #000571 0%, #003C44 100%)',
+        'gradient-6':'linear-gradient(215.31deg, #06154B 37.37%, #05050A 100%)',
+        'gradient-7':'linear-gradient(90deg, #242F53 0%, #051240 100%)',
+        'gradient-8':'linear-gradient(90deg, #34024B 0%, #150652 100%)'
       },
       borderRadius: {
         lg: 'var(--radius)',

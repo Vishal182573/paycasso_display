@@ -88,11 +88,6 @@ const HowItWorks: React.FC = () => {
               index={index}
               isLast={index === steps.length - 1}
             />
-            {index % 2 === 0 && index !== steps.length - 1 && (
-              <div className="md:hidden w-full flex justify-center items-center">
-                <Image src={ARROW} alt="arrow" className="w-8 h-24 transform rotate-90" />
-              </div>
-            )}
           </React.Fragment>
         ))}
       </div>

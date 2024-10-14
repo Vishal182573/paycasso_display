@@ -20,7 +20,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, onClick }) => {
     <Link
       href={href}
       className={`${
-        isActive ? 'text-[#6B5C5C]' : 'text-[#6B5C5C]'
+        isActive ? 'text-gray-100' : 'text-gray-400'
       } hover:text-white transition-colors`}
       onClick={onClick}
     >

@@ -84,7 +84,7 @@ const WhyPaycasso: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#0a0a18] min-h-screen flex flex-col items-center justify-center p-8">
+    <div className=" min-h-screen flex flex-col items-center justify-center p-8">
       <motion.div
         className="text-center mb-16"
         initial={{ opacity: 0, y: -20 }}

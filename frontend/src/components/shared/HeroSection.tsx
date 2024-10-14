@@ -12,7 +12,7 @@ const PaycassoIntro = () => {
   };
 
   return (
-    <div className="text-white min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 lg:px-48 py-12 lg:py-0">
+    <div className="text-white min-h-screen w-full flex flex-col lg:flex-row items-center justify-between px-6 lg:px-48 py-12 lg:py-0">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
