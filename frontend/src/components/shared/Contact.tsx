@@ -29,7 +29,7 @@ const PaycassoSignup = () => {
           >
             <h2 className="text-3xl font-bold text-white mb-4">For Users</h2>
             <p className="text-indigo-200 mb-4">
-              "We're working hard to deliver the best experience for you. Our software launch is just around the corner!"
+              We are working hard to deliver the best experience for you. Our software launch is just around the corner!
             </p>
             <form onSubmit={handleSubmit} className="space-y-4">
               <input
@@ -56,7 +56,7 @@ const PaycassoSignup = () => {
           >
             <h2 className="text-3xl font-bold text-white mb-4">For Enterprises</h2>
             <p className="text-indigo-200 mb-4">
-              "Embrace the future of subscription payments—Partner with us today!"
+              Embrace the future of subscription payments—Partner with us today!
             </p>
             <button
               onClick={() => console.log('Enterprise signup clicked')}
