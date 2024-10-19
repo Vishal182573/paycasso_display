@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        caveat:['Caveat','serif']
+      },
       colors: {
         // Original shadcn/ui colors
         background: 'hsl(var(--background))',

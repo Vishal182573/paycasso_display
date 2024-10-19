@@ -92,7 +92,7 @@ const WhyPaycasso: React.FC = () => {
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-[#FFA756] text-2xl font-semibold mb-4">WHY PAYCASSO?</h2>
-        <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold">
+        <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold font-caveat">
           Make the payment<br />in one click
         </h1>
       </motion.div>

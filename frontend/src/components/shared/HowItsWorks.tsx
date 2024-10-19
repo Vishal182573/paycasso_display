@@ -74,7 +74,7 @@ const HowItWorks: React.FC = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-6xl font-bold text-white mb-12 text-center"
+        className="text-6xl font-bold text-white mb-12 text-center font-caveat"
       >
         How it works?
       </motion.h2>

@@ -17,7 +17,7 @@ const PaycassoIntro = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-2xl w-full space-y-6 mb-12 lg:mb-0"
+        className="max-w-2xl w-full space-y-6 mb-12 lg:mb-0 font-caveat"
       >
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

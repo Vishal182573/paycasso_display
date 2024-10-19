@@ -29,9 +29,15 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, onClick }) => {
   );
 };
 
-const onSignup = () => {
-  alert("signup clicked");
-}
+const onContactClick = () => {
+  const contactElement = document.getElementById('contact');
+  if (contactElement) {
+    contactElement.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+};
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
@@ -91,7 +97,7 @@ const Navbar: React.FC = () => {
           className="text-white text-2xl font-bold"
         >
           <Link href="/">
-          <Image src={LOGO} alt='logo' width={34} height={34} className='w-32'/>
+            <Image src={LOGO} alt='logo' width={34} height={34} className='w-32'/>
           </Link>
         </motion.div>
         <div className="hidden md:flex items-center gap-8">
@@ -112,10 +118,10 @@ const Navbar: React.FC = () => {
             animate="animate"
             transition={{ duration: 0.5, delay: 0.4 }}
             className="bg-gradient-dark-tr border-2-wh border-2 border-white text-white px-6 py-2 rounded-full hover:bg-gradient-dark-radial transition-colors"
-            onClick={onSignup}
+            onClick={onContactClick}
             type="button"
           >
-            Signup
+            Contact Us
           </motion.button>
         </div>
         <div className="md:hidden"> 
@@ -139,12 +145,12 @@ const Navbar: React.FC = () => {
             <button
               className="bg-gradient-dark-tr border-2-wh border-2 border-white text-white px-6 py-2 rounded-full hover:bg-gradient-dark-radial transition-colors"
               onClick={() => {
-                onSignup();
+                onContactClick();
                 toggleMobileMenu();
               }}
               type="button"
             >
-              Signup
+              Contact Us
             </button>
           </div>
         </motion.div>

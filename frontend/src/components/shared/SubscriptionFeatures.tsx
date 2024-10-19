@@ -56,7 +56,7 @@ const SubscriptionFeatures = () => {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-12 text-center leading-tight"
+        className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-12 text-center leading-tight font-caveat"
       >
         Transform the way you
         <br />
