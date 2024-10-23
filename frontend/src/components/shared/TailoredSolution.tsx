@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { CARDIMAGE1, CARDIMAGE2, CARDIMAGE3, SECURITY } from '@/public';
+import { CardSpotlight } from '../ui/card-spotlight';
 
 interface CardData {
   title: string;
@@ -69,7 +70,7 @@ const Card: React.FC<CardData & { index: number }> = ({
       transition={{ duration: 0.8, delay: 0.2 }}
       className={`flex flex-col md:flex-row items-center rounded-2xl overflow-hidden mb-8 sm:mb-12 ${bgcolor} border border-gray-800 hover:border-gray-700 transition-all duration-300 group`}
     >
-      <div className={`w-full md:w-1/2 p-6 sm:p-8 md:p-12 ${isEven ? 'order-1 md:order-1' : 'order-1 md:order-2'}`}>
+      <CardSpotlight className={`w-full md:w-1/2 p-6 sm:p-8 md:p-12 ${isEven ? 'order-1 md:order-1' : 'order-1 md:order-2'}`}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -88,7 +89,7 @@ const Card: React.FC<CardData & { index: number }> = ({
             {description}
           </p>
         </motion.div>
-      </div>
+      </CardSpotlight>
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
         animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}

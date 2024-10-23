@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
 
   return (
     <motion.nav
-      className="sticky top-0 w-full z-50 py-6 px-6"
+      className="sticky top-0 w-full z-20 py-6 px-6"
       initial="initial"
       animate={isScrolled ? 'scrolled' : 'initial'}
       variants={navVariants}

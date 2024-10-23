@@ -4,13 +4,14 @@ import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import Image from 'next/image';
 import { PHONE } from '@/public';
+import { FlipWords } from '../ui/flip-words';
 
 const PaycassoIntro = () => {
   const handleJoinNow = () => {
     console.log("Join Now clicked!");
     // Add your join now logic here
   };
-
+  const words = ["simple", "fast", "secure", "effortless", "smart"];
   return (
     <div className="text-white min-h-screen w-full flex flex-col lg:flex-row items-center justify-between px-6 lg:px-48 py-12 lg:py-0">
       <motion.div
@@ -34,8 +35,7 @@ const PaycassoIntro = () => {
           className="text-4xl lg:text-6xl font-extrabold leading-tight"
         >
           Make paying
-          <br />
-          Easier with wallet
+          <br /><FlipWords words={words}/> 
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
