@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import { Button } from '../ui/button';
 
 const PaycassoSignup = () => {
   const [email, setEmail] = useState('');
@@ -21,7 +22,7 @@ const PaycassoSignup = () => {
 
       if (response.status === 201) {
         setSuccessMessage('Email submitted successfully! You are on the waitlist.');
-        setEmail(''); // Clear the input field
+        setEmail('');
       }
     } catch (error: any) {
       setErrorMessage(error.response?.data?.message || 'Failed to submit email.');
@@ -32,51 +33,51 @@ const PaycassoSignup = () => {
 
   const handleEnterpriseSignup = () => {
     console.log('Enterprise signup clicked');
-    // Additional enterprise signup logic can go here
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" id='contact'>
+    <div className="min-h-screen flex items-center justify-center p-4 bg-black w-full" id="contact">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-4xl rounded-lg overflow-hidden"
+        className="w-full max-w-4xl"
       >
-        <h1 className="text-3xl font-bold text-white text-center py-6 font-caveat">
-          Ready to start with Paycasso?
+        <h1 className="text-5xl font-bold text-white text-center mb-16">
+          Ready to join the revolution?
         </h1>
-        <div className="flex flex-col md:flex-row md:space-x-28 space-y-8 md:space-y-0">
+        <div className="flex flex-col md:flex-row gap-60">
           {/* User Signup Section */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="w-full md:w-1/2 px-14 bg-opacity-20 bg-gradient-6 rounded-2xl md:h-[50vh] flex flex-col justify-between items-center pb-16 pt-8"
+            className="w-full md:w-1/2 bg-[#1a1a1a] rounded-3xl p-10 border-[1px] border-white"
           >
-            <h2 className="text-3xl font-bold text-white mb-4">For Users</h2>
-            <p className="text-indigo-200 mb-4">
-              We are working hard to deliver the best experience for you. Our software launch is just around the corner!
+            <h2 className="text-2xl text-center font-bold text-white mb-4">For Users</h2>
+            <p className="text-gray-400 text-sm mb-8">
+              Almost there! We are perfecting your experience—launching soon!
             </p>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <input
                 type="email"
-                placeholder="Email Id"
+                placeholder="Enter your Email..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-2 rounded-3xl bg-gradient-7 text-white placeholder-indigo-300"
+                className="w-full p-3 rounded-full bg-[#2a2a2a] text-white placeholder-gray-500 border-none focus:ring-2 focus:ring-gray-500 font-semibold text-sm"
                 required
               />
-              <button
+              <Button
                 type="submit"
-                className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 rounded-2xl transition duration-300"
+                variant="outline"
+                className="w-full text-white bg-black border-white font-semibold py-4 rounded-full transition duration-300"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Submitting...' : 'Join the waitlist'}
-              </button>
+                Join the waitlist
+              </Button>
             </form>
-            {successMessage && <p className="text-green-500 mt-2">{successMessage}</p>}
-            {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
+            {successMessage && <p className="text-green-500 mt-4">{successMessage}</p>}
+            {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
           </motion.div>
 
           {/* Enterprise Signup Section */}
@@ -84,24 +85,24 @@ const PaycassoSignup = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="w-full md:w-1/2 bg-opacity-30 bg-gradient-6 rounded-2xl md:h-[50vh] flex flex-col justify-between items-center pb-16 pt-8 px-14"
+            className="w-full md:w-1/2 bg-[#1a1a1a] rounded-3xl p-10 border-[1px] border-white"
           >
-            <h2 className="text-3xl font-bold text-white mb-4">For Enterprises</h2>
-            <p className="text-indigo-200 mb-4">
+            <h2 className="text-2xl text-center  font-bold text-white mb-4">For Enterprises</h2>
+            <p className="text-gray-400 text-sm mb-8">
               Embrace the future of subscription payments—Partner with us today!
             </p>
-            <button
+            <input
+              type="email"
+              placeholder="Enter your Email..."
+              className="w-full p-3 rounded-full bg-[#2a2a2a] text-white placeholder-gray-500 font-semibold text-sm border-none focus:ring-2 focus:ring-gray-500 mb-6"
+            />
+            <Button
+            variant="outline"
               onClick={handleEnterpriseSignup}
-              className="w-full bg-gradient-7 hover:bg-gradient-5 text-white font-semibold py-2 rounded-2xl transition duration-300 mb-4"
+              className="w-full text-white bg-black font-semibold py-4 rounded-full transition duration-300"
             >
-              Signup Now
-            </button>
-            <div className="text-indigo-200">
-              <p className="mb-2">Have queries?</p>
-              <p>Contact Us:</p>
-              <p>info.paycasso@gmail.com</p>
-              <p>+91 9876543210</p>
-            </div>
+              Join the waitlist
+            </Button>
           </motion.div>
         </div>
       </motion.div>

@@ -1,108 +1,86 @@
 "use client"
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { motion, useInView, useAnimation } from 'framer-motion';
-import { CARD, DOLLAR, GIFT, LOCK } from '@/public';
+import { motion } from 'framer-motion';
+import { BAINSKIANKH, BOOKSTACK, DASHBOARD, HATHSIKKA } from '@/public';
 
 interface FeatureProps {
   icon: any;
   title: string;
   description: string;
-  color: string;
-  underlineColor: string;
 }
 
-const Feature: React.FC<FeatureProps> = ({ icon, title, description, color, underlineColor }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.2 });
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
-  }, [isInView, controls]);
+const Feature: React.FC<FeatureProps> = ({ icon, title, description }) => {
 
   return (
     <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, scale: 0.8 },
-        visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
-      }}
-      className="flex flex-col items-start text-start max-w-xs mx-auto"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="flex items-start text-start space-x-6"
     >
-      <motion.div
-        className={`w-16 h-16 rounded-full flex items-center justify-center mb-10`}
-        style={{ backgroundColor: color }}
-        whileHover={{ scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-      >
-        <Image src={icon} alt={title} width={20} height={20} />
-      </motion.div>
-      <h3 className="text-white text-lg font-semibold mb-2">{title}</h3>
-      <div className={`w-32 h-[1px] mb-4`} style={{ backgroundColor: underlineColor }}></div>
-      <p className="text-gray-400 text-sm">{description}</p>
+      <div className="w-14 h-14 rounded-full bg-[#1E1E1E] flex items-center justify-center mb-6">
+        <Image src={icon} alt={title} width={24} height={24} />
+      </div>
+      <div className='flex flex-col'>
+        <h3 className="text-white text-2xl font-bold mb-4">{title}</h3>
+        <p className="text-gray-300 text-md leading-relaxed ">
+          {description}
+        </p>
+      </div>
     </motion.div>
   );
 };
 
-const WhyPaycasso: React.FC = () => {
-  const features: FeatureProps[] = [
+const WhyChooseUs: React.FC = () => {
+  const features = [
     {
-      icon: LOCK,
-      title: "Always Protected",
-      description: "Concerned about sharing your card for every subscription? With us, your data stays yours, secured by decentralized system",
-      color: "#C7F47E",
-      underlineColor: "#4B9EFF",
+      icon: BOOKSTACK,
+      title: 'Cutting-Edge Technology',
+      description: 'Id eleifend quis urna tellus tempor facilisis at semper ac. Interdum tortor ut ac.'
     },
     {
-      icon: DOLLAR,
-      title: "No Hidden Fees",
-      description: "No hidden fees, no surprises. What you see is what you pay — always transparent, always straightforward.",
-      color: "#FF87F1",
-      underlineColor: "#FF4DCD",
+      icon: HATHSIKKA,
+      title: 'User Empowerment',
+      description: 'Id eleifend quis urna tellus tempor facilisis at semper ac. Interdum tortor ut ac.'
     },
     {
-      icon: CARD,
-      title: "Frictionless Payment",
-      description: "Skip OTP hassles—just tap our partner's checkout and confirm your payment securely with your PIN or fingerprint in our app",
-      color: "#FFA756",
-      underlineColor: "#FF7629",
-    },
-    {
-      icon: GIFT,
-      title: "Earn While You Spend",
-      description: "Every payment brings rewards. Earn loyalty points that grow with every transaction, giving you more value each time you pay",
-      color: "#699FF0",
-      underlineColor: "#3D7DD9",
-    },
+      icon: BAINSKIANKH,
+      title: 'Transparent and Secure',
+      description: 'Id eleifend quis urna tellus tempor facilisis at semper ac. Interdum tortor ut ac.'
+    }
   ];
 
   return (
-    <div className=" min-h-screen flex flex-col items-center justify-center p-8">
-      <motion.div
-        className="text-center mb-16"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="text-[#FFA756] text-2xl font-semibold mb-4">WHY PAYCASSO?</h2>
-        <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold font-caveat">
-          Make the payment<br />in one click
-        </h1>
-      </motion.div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 w-full max-w-7xl">
-        {features.map((feature, index) => (
-          <Feature key={index} {...feature} />
-        ))}
+    <div className="bg-black min-h-screen flex items-start py-20 px-8 w-full">
+      <div className="w-full max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          <div className="space-y-16">
+            <div>
+              <h2 className="text-white uppercase tracking-wide mb-4">Why Choose Us</h2>
+              <h1 className="text-white text-5xl font-bold leading-tight mb-4">
+                Transform the way you manage subscriptions
+              </h1>
+            </div>
+            <div className="grid gap-12">
+              {features.map((feature, index) => (
+                <Feature key={index} {...feature} />
+              ))}
+            </div>
+          </div>
+          <div className="relative">
+            <Image
+              src={DASHBOARD}
+              alt="Dashboard Preview"
+              width={500}
+              height={700}
+              className="object-cover rounded-lg"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default WhyPaycasso;
+export default WhyChooseUs;

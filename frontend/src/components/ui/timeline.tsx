@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,10 +6,10 @@ import Image from "next/image";
 import { CASH, PLAYSTORE, TROPHY, WALLET } from "@/public";
 
 const steps = [
-  { icon: PLAYSTORE, title: "Signup on Paycasso", color: "#B83030" },
-  { icon: WALLET, title: "Top-up your wallet", color: "#C7F47E" },
-  { icon: CASH, title: "Make a payment", color: "#699FF0" },
-  { icon: TROPHY, title: "Earn Rewards", color: "#FFA756" },
+  { icon: PLAYSTORE, title: "Signup on Paycasso", color: "#1A1A1A" },
+  { icon: WALLET, title: "Top-up your wallet", color: "#1A1A1A" },
+  { icon: CASH, title: "Make a payment", color: "#1A1A1A" },
+  { icon: TROPHY, title: "Earn Rewards", color: "#1A1A1A" },
 ];
 
 const Timeline = () => {
@@ -34,32 +33,44 @@ const Timeline = () => {
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div className="w-full min-h-screen font-sans" ref={containerRef}>
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
+    <div className="w-full min-h-screen bg-black font-sans" ref={containerRef}>
+      <div className="max-w-7xl mx-auto pt-20 pb-16 px-4 md:px-8 lg:px-10">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-6xl font-bold text-white mb-12 text-center font-caveat"
+          className="text-5xl md:text-6xl font-bold text-white text-center bg-clip-text"
         >
-          How it works?
+          How it works
         </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-gray-400 text-center mt-4 text-lg max-w-2xl mx-auto"
+        >
+          Get started with Paycasso in four simple steps
+        </motion.p>
       </div>
 
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+      <div ref={ref} className="relative max-w-6xl mx-auto pb-32">
         {steps.map((step, index) => (
-          <div
+          <motion.div
             key={index}
-            className="flex justify-start pt-10 md:pt-40 md:gap-10"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className="flex justify-start pt-14 md:pt-28 md:gap-8"
           >
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div 
-                className="h-16 w-16 absolute left-3 md:left-3 rounded-2xl flex items-center justify-center"
-                style={{ backgroundColor: step.color }}
+            <div className="sticky flex flex-col md:flex-row z-30 items-center top-32 self-start max-w-xs lg:max-w-sm md:w-full">
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                className="h-16 w-16 absolute left-3 md:left-3 rounded-2xl flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900 shadow-lg backdrop-blur-lg z-40"
               >
                 <Image src={step.icon} alt={step.title} className="w-8 h-8" />
-              </div>
-              <h3 className="hidden md:block text-xl md:pl-24 md:text-3xl font-bold text-white">
+              </motion.div>
+              <h3 className="hidden md:block text-xl md:text-2xl lg:text-3xl md:pl-24 font-bold text-white">
                 {step.title}
               </h3>
             </div>
@@ -68,37 +79,44 @@ const Timeline = () => {
               <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-white">
                 {step.title}
               </h3>
-              <Card className="bg-opacity-10 backdrop-blur-lg bg-white border-none">
-                <CardContent className="p-6">
-                  <p className="text-white opacity-80">
-                    {getStepDescription(index)}
-                  </p>
-                </CardContent>
-              </Card>
+              <motion.div
+                whileHover={{ y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Card className="bg-gradient-to-b from-gray-800 to-gray-900 border-none shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                  <CardContent className="p-8">
+                    <p className="text-white opacity-90 font-medium text-lg leading-relaxed">
+                      {getStepDescription(index)}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         ))}
 
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-200 dark:via-neutral-700 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-gray-700 to-transparent"
         >
           <motion.div
             style={{
               height: heightTransform,
               opacity: opacityTransform,
             }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-gray-600 via-gray-500 to-transparent rounded-full"
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );
 };
 
-// Helper function to provide step descriptions
 const getStepDescription = (index: number) => {
   const descriptions = [
     "Create your account on Paycasso in just a few simple steps. Get started with our secure and user-friendly platform.",

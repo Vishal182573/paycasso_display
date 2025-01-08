@@ -4,8 +4,8 @@ import { motion, useScroll } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import Image from 'next/image';
-import { LOGO } from '@/public';
+// import Image from 'next/image';
+// import { LOGO } from '@/public';
 
 interface NavLinkProps {
   href: string;
@@ -20,8 +20,8 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, onClick }) => {
     <Link
       href={href}
       className={`${
-        isActive ? 'text-gray-100' : 'text-gray-400'
-      } hover:text-white transition-colors`}
+        isActive ? 'text-white' : 'text-gray-400'
+      } hover:text-white transition-colors text-sm`}
       onClick={onClick}
     >
       {children}
@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
 
   const navVariants = {
     initial: {
-      backgroundColor: 'rgba(0, 0, 0, 0)',
+      backgroundColor: 'rgba(0, 0, 0, 1)',
       backdropFilter: 'blur(0px)'
     },
     scrolled: {
@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
 
   return (
     <motion.nav
-      className="sticky top-0 w-full z-20 py-6 px-6"
+      className="fixed z-50 top-0 w-full py-4 px-6 bg-black"
       initial="initial"
       animate={isScrolled ? 'scrolled' : 'initial'}
       variants={navVariants}
@@ -97,17 +97,17 @@ const Navbar: React.FC = () => {
           className="text-white text-2xl font-bold"
         >
           <Link href="/">
-            <Image src={LOGO} alt='logo' width={34} height={34} className='w-32'/>
+            <h1>Paycasso</h1>
           </Link>
         </motion.div>
-        <div className="hidden md:flex items-center gap-8">
           <motion.div
-            className="flex gap-8 mr-8"
+            className="flex gap-28 font-semibold text-sm"
             variants={linksVariants}
             initial="initial"
             animate="animate"
             transition={{ duration: 0.5, delay: 0.2 }}
           >
+            <NavLink href="/">Home</NavLink>
             <NavLink href="/about-wallet">About wallet</NavLink>
             <NavLink href="/how-it-works">How it works?</NavLink>
             <NavLink href="/documentation">Documentation</NavLink>
@@ -117,13 +117,12 @@ const Navbar: React.FC = () => {
             initial="initial"
             animate="animate"
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-gradient-dark-tr border-2-wh border-2 border-white text-white px-6 py-2 rounded-full hover:bg-gradient-dark-radial transition-colors"
+            className="bg-gray-700 text-white px-6 py-2 rounded-full text-sm hover:bg-gray-600 transition-colors font-bold border-white"
             onClick={onContactClick}
             type="button"
           >
-            Contact Us
+            Sign Up
           </motion.button>
-        </div>
         <div className="md:hidden"> 
           <button onClick={toggleMobileMenu} className="text-white">
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -139,18 +138,19 @@ const Navbar: React.FC = () => {
           className="md:hidden mt-4 bg-black bg-opacity-90 rounded-lg p-4"
         >
           <div className="flex flex-col gap-4">
+            <NavLink href="/" onClick={toggleMobileMenu}>Home</NavLink>
             <NavLink href="/about-wallet" onClick={toggleMobileMenu}>About wallet</NavLink>
             <NavLink href="/how-it-works" onClick={toggleMobileMenu}>How it works?</NavLink>
             <NavLink href="/documentation" onClick={toggleMobileMenu}>Documentation</NavLink>
             <button
-              className="bg-gradient-dark-tr border-2-wh border-2 border-white text-white px-6 py-2 rounded-full hover:bg-gradient-dark-radial transition-colors"
+              className="bg-gradient-dark-tr text-white px-6 py-2 rounded-full text-sm hover:bg-gray-600 transition-colors"
               onClick={() => {
                 onContactClick();
                 toggleMobileMenu();
               }}
               type="button"
             >
-              Contact Us
+              Sign Up
             </button>
           </div>
         </motion.div>

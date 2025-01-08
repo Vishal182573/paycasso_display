@@ -1,56 +1,134 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { APPSOTRE, INSTAGRAM, PLAYSTORE, YOUTUBE } from '@/public';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-1 text-white py-8 px-4 md:px-8">
+    <footer className="bg-[#0F111A] text-white py-12 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-2">
-            <h2 className="text-2xl font-bold mb-4">Paycasso</h2>
-            <h3 className="text-xl font-semibold mb-2">Where</h3>
-            <h3 className="text-xl font-semibold mb-2">Convenience</h3>
-            <h3 className="text-xl font-semibold mb-4">Meets Security.</h3>
-            <p className="mb-4">Download the app today</p>
-            <div className="flex space-x-4">
-              <Link href="#" className="w-8 h-8">
-                <Image src="/api/placeholder/32/32" alt="Google Play" width={32} height={32} />
-              </Link>
-              <Link href="#" className="w-8 h-8">
-                <Image src="/api/placeholder/32/32" alt="App Store" width={32} height={32} />
-              </Link>
+          {/* Brand Section */}
+          <div className="space-y-6">
+            <h2 className="text-2xl font-semibold">Paycasso</h2>
+            <div className="space-y-1">
+              <h3 className="text-lg font-normal">Where</h3>
+              <h3 className="text-lg font-normal">Convenience</h3>
+              <h3 className="text-lg font-normal">Meets Security.</h3>
+            </div>
+            <div className="space-y-3">
+              <p className="text-sm">Download the app today</p>
+              <div className="flex space-x-4">
+                <Link href="#" className="w-10 h-10">
+                  <Image 
+                    src={PLAYSTORE}
+                    alt="Google Play" 
+                    width={24} 
+                    height={24}
+                    className="object-contain"
+                  />
+                </Link>
+                <Link href="#" className="w-10 h-10">
+                  <Image 
+                    src={APPSOTRE}
+                    alt="App Store" 
+                    width={24} 
+                    height={24}
+                    className="object-contain"
+                  />
+                </Link>
+              </div>
             </div>
           </div>
-          <div>
-            <Link href="/" className="block mb-2 hover:underline">Home</Link>
-            <Link href="/about-wallet" className="block mb-2 hover:underline">About wallet</Link>
-            <Link href="/how-it-works" className="block mb-2 hover:underline">How it works?</Link>
-            <Link href="/docs" className="block mb-2 hover:underline">Documentation for developers</Link>
+
+          {/* Navigation Links */}
+          <div className="space-y-4">
+            <Link href="/" className="block text-white hover:text-gray-300">
+              Home
+            </Link>
+            <Link href="/about-wallet" className="block text-white hover:text-gray-300">
+              About wallet
+            </Link>
+            <Link href="/how-it-works" className="block text-white hover:text-gray-300">
+              How it works?
+            </Link>
+            <Link href="/docs" className="block text-white hover:text-gray-300">
+              Documentation for developers
+            </Link>
           </div>
-          <div>
-            <Link href="/faq" className="block mb-4 hover:underline">FAQ</Link>
-            <h4 className="font-semibold mb-2">Contact us:</h4>
-            <p className="text-sm mb-2">Integration related queries:</p>
-            <Link href="mailto:info.paycasso@gmail.com" className="text-sm block mb-4 hover:underline">info.paycasso@gmail.com</Link>
-            <p className="text-sm mb-2">Business related queries:</p>
-            <Link href="mailto:business.paycasso@gmail.com" className="text-sm block mb-4 hover:underline">business.paycasso@gmail.com</Link>
-            <div className="flex items-center mt-4">
-              <p className="mr-4">Follow us</p>
-              <Link href="#" className="mr-2">
-                <Image src="/api/placeholder/24/24" alt="Instagram" width={24} height={24} />
+
+          {/* Contact Section */}
+          <div className="space-y-4">
+            <Link href="/faq" className="block font-medium">
+              FAQ
+            </Link>
+            <div className="space-y-2">
+              <p className="text-sm">Contact us:</p>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-xs text-gray-400">Integration related queries:</p>
+                  <Link 
+                    href="mailto:info.paycasso@gmail.com" 
+                    className="text-sm block hover:text-gray-300"
+                  >
+                    info.paycasso@gmail.com
+                  </Link>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-400">Business related queries:</p>
+                  <Link 
+                    href="mailto:business.paycasso@gmail.com" 
+                    className="text-sm block hover:text-gray-300"
+                  >
+                    business.paycasso@gmail.com
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="space-y-4">
+            <h3 className="font-medium">Follow us</h3>
+            <div className="flex space-x-4">
+              <Link href="#" className="hover:opacity-80">
+                <Image 
+                  src={INSTAGRAM} 
+                  alt="Instagram" 
+                  width={24} 
+                  height={24}
+                />
               </Link>
-              <Link href="#">
-                <Image src="/api/placeholder/24/24" alt="YouTube" width={24} height={24} />
+              <Link href="#" className="hover:opacity-80">
+                <Image 
+                  src={YOUTUBE}
+                  alt="YouTube" 
+                  width={24} 
+                  height={24}
+                />
               </Link>
             </div>
           </div>
         </div>
-        <div className="mt-8 pt-4 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm mb-4 md:mb-0">&copy; 2024, Paycasso Pvt Limited</p>
-          <div className="flex space-x-4">
-            <Link href="/privacy-policy" className="text-sm hover:underline">Privacy Policy</Link>
-            <Link href="/terms-of-use" className="text-sm hover:underline">Terms of use</Link>
+
+        {/* Bottom Section */}
+        <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-sm text-gray-400 mb-4 md:mb-0">
+            © 2024, Paycasso Pvt Limited
+          </p>
+          <div className="flex space-x-6">
+            <Link 
+              href="/privacy-policy" 
+              className="text-sm text-gray-400 hover:text-gray-300"
+            >
+              Privacy Policy
+            </Link>
+            <Link 
+              href="/terms-of-use" 
+              className="text-sm text-gray-400 hover:text-gray-300"
+            >
+              Terms of use
+            </Link>
           </div>
         </div>
       </div>

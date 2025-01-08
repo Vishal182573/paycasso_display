@@ -1,80 +1,84 @@
 "use client"
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Button } from "@/components/ui/button";
-import Image from 'next/image';
-import { PHONE } from '@/public';
-import { FlipWords } from '../ui/flip-words';
+import React from 'react'
+import { motion } from 'framer-motion'
+import { Button } from "@/components/ui/button"
+import { ChevronDown } from 'lucide-react'
 
-const PaycassoIntro = () => {
-  const handleJoinNow = () => {
-    console.log("Join Now clicked!");
-    // Add your join now logic here
+const HeroSection = () => {
+  const scrollToNext = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth'
+    });
   };
-  const words = ["simple", "fast", "secure", "effortless", "smart"];
+
+  // const buttonVariants = {
+  //   hover: {
+  //     scale: 1.05,
+  //     transition: {
+  //       duration: 0.2
+  //     }
+  //   }
+  // };
+
+  // const fadeInUp = {
+  //   initial: { opacity: 0, y: 20 },
+  //   animate: { opacity: 1, y: 0 },
+  //   transition: { duration: 0.6 }
+  // };
+
+  const bounceAnimation = {
+    y: [0, -10, 0],
+    transition: {
+      duration: 1.5,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  };
   return (
-    <div className="text-white min-h-screen w-full flex flex-col lg:flex-row items-center justify-between px-6 lg:px-48 py-12 lg:py-0">
+    <div className="bg-black text-white min-h-screen  w-full flex flex-col items-center justify-center text-center px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-2xl w-full space-y-6 mb-12 lg:mb-0 font-caveat"
+        className="max-w-4xl space-y-8"
       >
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-xl lg:text-2xl font-semibold text-gray-300"
-        >
-          Introducing Paycasso
-        </motion.h2>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-4xl lg:text-6xl font-extrabold leading-tight"
-        >
-          Make paying
-          <br /><FlipWords words={words}/> 
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="text-lg lg:text-xl text-gray-300"
-        >
-          Manage all your subscriptions from your fingertips
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-        >
-          <Button
-            onClick={handleJoinNow}
-            className="bg-[#5d00ff] hover:bg-[#4b00cc] text-white font-semibold py-4 px-6 lg:p-6 rounded-lg text-base lg:text-lg transition-colors duration-300"
+        <div className="text-sm uppercase tracking-wider mb-4">
+          Decentralized Finance
+        </div>
+        
+        <h1 className="text-5xl sm:text-7xl font-serif mb-12">
+          The future of<br />money we build together
+        </h1>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button 
+            variant="outline"
+            className="bg-gray-700 hover:bg-gray-600 text-white hover:text-white px-8 py-2 rounded-full border-white"
           >
-            Join Now
+            Get Started
           </Button>
-        </motion.div>
+          <Button 
+            variant="outline" 
+            className="border-white text-white  px-8 py-2 rounded-full bg-black"
+          >
+            Learn More
+          </Button>
+        </div>
       </motion.div>
-      {/* Animate the image */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        className="w-full lg:w-auto flex justify-center lg:justify-start"
+      <motion.div 
+        className="absolute bottom-8 cursor-pointer"
+        onClick={scrollToNext}
+        animate={bounceAnimation}
+        whileHover={{ scale: 1.1 }}
       >
-        <Image 
-          src={PHONE} 
-          alt='phone logo' 
-          width={200} 
-          height={1000} 
-          className='w-64 lg:w-80'
-        />
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-sm font-light">Scroll Down</span>
+          <ChevronDown className="w-6 h-6" />
+        </div>
       </motion.div>
     </div>
-  );
-};
+  )
+}
 
-export default PaycassoIntro;
+export default HeroSection
