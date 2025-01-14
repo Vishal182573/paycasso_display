@@ -31,7 +31,9 @@ import INSTAGRAM from "./instagram.png"
 import YOUTUBE from "./youtube.png"
 // import PAYCASSOVIDEO from "/paycasso_video.mp4"
 import WOODENBG from "./wooden_bg.png"
-
+import OPENBOX1 from "./openBox1.png"
+import OPENBOX2 from "./openBox2.png"
+import OPENBOX3 from "./openBox3.png"
 export{
     PHONE,
     PLAYSTORE,
@@ -65,5 +67,8 @@ export{
     INSTAGRAM,
     YOUTUBE,
     // PAYCASSOVIDEO
-    WOODENBG
+    WOODENBG,
+    OPENBOX1,
+    OPENBOX2,
+    OPENBOX3
 }

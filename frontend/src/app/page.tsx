@@ -7,6 +7,7 @@ import Navbar from '@/components/shared/Navbar';
 import SubscriptionFeatures from '@/components/shared/SubscriptionFeatures';
 import TailoredSolutions from '@/components/shared/TailoredSolution';
 import ImageGroup from '@/components/shared/ThreeImage';
+
 // import { FollowerPointerCard } from '@/components/ui/following-pointer';
 import Timeline from '@/components/ui/timeline';
 
@@ -15,7 +16,7 @@ export default function Layout() {
     <section>
         {/* <FollowerPointerCard title=""> */}
           <Navbar />
-      <main className="bg-gradient-dark w-screen flex flex-col justify-center items-center">
+      <main className="w-screen flex flex-col justify-center items-center">
         {/* Wrap the Navbar with FollowerPointerCard */}
         {/* Wrap PaycassoIntro with FollowerPointerCard */}
           <PaycassoIntro />
