@@ -29,6 +29,8 @@ import CENTERETHERIUM from "./centerEtherium.png"
 import CENTERETHERBG from "./centerEtherBg.png"
 import INSTAGRAM from "./instagram.png"
 import YOUTUBE from "./youtube.png"
+// import PAYCASSOVIDEO from "/paycasso_video.mp4"
+import WOODENBG from "./wooden_bg.png"
 
 export{
     PHONE,
@@ -61,5 +63,7 @@ export{
     CENTERETHERBG,
     APPSOTRE,
     INSTAGRAM,
-    YOUTUBE
+    YOUTUBE,
+    // PAYCASSOVIDEO
+    WOODENBG
 }

@@ -54,6 +54,25 @@ const Timeline = () => {
       </div>
 
       <div ref={ref} className="relative max-w-6xl mx-auto pb-32">
+        {/* Timeline Line - Moved up in DOM order and adjusted z-index */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          style={{
+            height: height + "px",
+          }}
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-gray-700 to-transparent z-0"
+        >
+          <motion.div
+            style={{
+              height: heightTransform,
+              opacity: opacityTransform,
+            }}
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-gray-600 via-gray-500 to-transparent rounded-full"
+          />
+        </motion.div>
+
         {steps.map((step, index) => (
           <motion.div
             key={index}
@@ -61,12 +80,12 @@ const Timeline = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="flex justify-start pt-14 md:pt-28 md:gap-8"
+            className="flex justify-start pt-14 md:pt-28 md:gap-8 relative"
           >
-            <div className="sticky flex flex-col md:flex-row z-30 items-center top-32 self-start max-w-xs lg:max-w-sm md:w-full">
+            <div className="sticky flex flex-col md:flex-row items-center top-32 self-start max-w-xs lg:max-w-sm md:w-full">
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="h-16 w-16 absolute left-3 md:left-3 rounded-2xl flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900 shadow-lg backdrop-blur-lg z-40"
+                className="h-16 w-16 absolute left-3 md:left-3 rounded-2xl flex items-center justify-center bg-gradient-to-b from-gray-800 to-gray-900 backdrop-blur-lg z-10 shadow-lg"
               >
                 <Image src={step.icon} alt={step.title} className="w-8 h-8" />
               </motion.div>
@@ -75,7 +94,7 @@ const Timeline = () => {
               </h3>
             </div>
 
-            <div className="relative pl-24 pr-4 md:pl-4 w-full">
+            <div className="relative pl-24 pr-4 md:pl-4 w-full z-20">
               <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-white">
                 {step.title}
               </h3>
@@ -94,24 +113,6 @@ const Timeline = () => {
             </div>
           </motion.div>
         ))}
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          style={{
-            height: height + "px",
-          }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-gray-700 to-transparent"
-        >
-          <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
-            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-gray-600 via-gray-500 to-transparent rounded-full"
-          />
-        </motion.div>
       </div>
     </div>
   );
@@ -119,10 +120,10 @@ const Timeline = () => {
 
 const getStepDescription = (index: number) => {
   const descriptions = [
-    "Create your account on Paycasso in just a few simple steps. Get started with our secure and user-friendly platform.",
-    "Add funds to your Paycasso wallet using your preferred payment method. Your money is safe and ready to use.",
-    "Use your wallet balance to make quick and secure payments. Send money to friends or pay for services instantly.",
-    "Earn exciting rewards and cashback on every transaction. The more you use Paycasso, the more you earn!"
+    "Create your Web3 wallet in minutes with our intuitive platform. Experience secure, blockchain-powered transactions.",
+    "Top up with your preferred fiat currency, instantly converted to USDC. Your digital assets, secured by blockchain technology.",
+    "Transform your USDC balance into subscription payments anywhere in the world.",
+    "Earn rewards in your local currency with every subscription payment. The more you use Paycasso, the more you save on your favorite services!"
   ];
   return descriptions[index];
 };

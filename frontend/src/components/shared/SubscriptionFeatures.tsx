@@ -51,7 +51,7 @@ const ServiceItem: React.FC<ServiceItemProps> = ({ title, description, icon, ind
       <motion.div 
         className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mb-6"
         whileHover={{ 
-          rotate: 360,
+          // rotate: 360,
           scale: 1.2,
           transition: { duration: 0.6 }
         }}
@@ -67,8 +67,8 @@ const ServiceItem: React.FC<ServiceItemProps> = ({ title, description, icon, ind
         }}
       >
         <motion.div
-          whileHover={{ rotate: -360 }}
-          transition={{ duration: 0.6 }}
+          // whileHover={{ rotate: -360 }}
+          // transition={{ duration: 0.6 }}
         >
           <Image src={icon} alt="images" className="w-8 h-8"/>
         </motion.div>
@@ -98,33 +98,33 @@ const ServiceItem: React.FC<ServiceItemProps> = ({ title, description, icon, ind
 const ServicesSection = () => {
   const services = [
     {
-      title: "Smart Contract",
-      description: "Fermentum leo fermentum molestie vulputate augue faucibus. Dui volutpat sem facilisi et arcu risus cursus dui.",
+      title: "In-app promotions",
+      description: "In-app promotions that connect you with an audience that actually pays and subscribes for user acquisition",
       icon: CARDIMAGE1
     },
     {
-      title: "Liquidity Provision",
-      description: "Fermentum leo fermentum molestie vulputate augue faucibus. Dui volutpat sem facilisi et arcu risus cursus dui.",
+      title: "Marketplace",
+      description: "Increased user engagement through a marketplace, offering a wide range of options and promotions",
       icon: CARDIMAGE2
     },
     {
-      title: "Decentralized Identity",
-      description: "Fermentum leo fermentum molestie vulputate augue faucibus. Dui volutpat sem facilisi et arcu risus cursus dui.",
+      title: "Payment Solutions",
+      description: "More payment options with enhanced security, utilizing crypto and stable coins for safer and faster transactions",
       icon: CARDIMAGE3
     },
     {
-      title: "Staking and Governance",
-      description: "Fermentum leo fermentum molestie vulputate augue faucibus. Dui volutpat sem facilisi et arcu risus cursus dui.",
+      title: "Gamified reward system",
+      description: "An in-app reward system designed to incentivize users encouraging continued loyalty to service and engagement",
       icon: CARDIMAGE4
     },
     {
-      title: "Decentralized Oracle",
-      description: "Fermentum leo fermentum molestie vulputate augue faucibus. Dui volutpat sem facilisi et arcu risus cursus dui.",
+      title: "Improved User Insights",
+      description: "Offers analytics to track user behavior, helping businesses and enterprises make data-driven decisions.",
       icon: CARDIMAGE5
     },
     {
-      title: "Security Audits",
-      description: "Fermentum leo fermentum molestie vulputate augue faucibus. Dui volutpat sem facilisi et arcu risus cursus dui.",
+      title: "Global Accessibility",
+      description: "Enables businesses to cater to international markets by supporting multiple payment options and currencies.",
       icon: CARDIMAGE6
     }
   ];
@@ -142,17 +142,17 @@ const ServicesSection = () => {
             OUR SERVICES
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            // initial={{ opacity: 0, scale: 0.5 }}
+            // whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
             className="text-4xl md:text-5xl font-bold text-white mb-6"
           >
             <motion.span
-              initial={{ display: "inline-block" }}
-              whileHover={{
-                scale: 1.1,
-                transition: { duration: 0.2 }
-              }}
+              // initial={{ display: "inline-block" }}
+              // whileHover={{
+              //   scale: 1.1,
+              //   transition: { duration: 0.2 }
+              // }}
             >
               Ignite your growth: Tailored Solutions
             </motion.span>
@@ -173,7 +173,7 @@ const ServicesSection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-gray-400 max-w-2xl mx-auto"
           >
-            Id eleifend quis urna tellus tempor facilisis at semper ac. Interdum tortor ut ac ullamcorper ac et facilisis.
+            You strive for the best we handle the rest
           </motion.p>
         </div>
 

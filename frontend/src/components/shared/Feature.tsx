@@ -3,15 +3,12 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { BAINSKIANKH, BOOKSTACK, DASHBOARD, HATHSIKKA } from '@/public';
-
 interface FeatureProps {
   icon: any;
   title: string;
   description: string;
 }
-
 const Feature: React.FC<FeatureProps> = ({ icon, title, description }) => {
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -31,26 +28,24 @@ const Feature: React.FC<FeatureProps> = ({ icon, title, description }) => {
     </motion.div>
   );
 };
-
 const WhyChooseUs: React.FC = () => {
   const features = [
     {
       icon: BOOKSTACK,
       title: 'Cutting-Edge Technology',
-      description: 'Id eleifend quis urna tellus tempor facilisis at semper ac. Interdum tortor ut ac.'
+      description: 'Fast, secure, and transparent subscription management powered by blockchain.'
     },
     {
       icon: HATHSIKKA,
       title: 'User Empowerment',
-      description: 'Id eleifend quis urna tellus tempor facilisis at semper ac. Interdum tortor ut ac.'
+      description: 'Take full control of subscriptions with intuitive tools and a tailored platform.'
     },
     {
       icon: BAINSKIANKH,
       title: 'Transparent and Secure',
-      description: 'Id eleifend quis urna tellus tempor facilisis at semper ac. Interdum tortor ut ac.'
+      description: 'Detailed transactions history with top-tier security for peace of mind.'
     }
   ];
-
   return (
     <div className="bg-black min-h-screen flex items-start py-20 px-8 w-full">
       <div className="w-full max-w-7xl mx-auto">
@@ -82,5 +77,4 @@ const WhyChooseUs: React.FC = () => {
     </div>
   );
 };
-
 export default WhyChooseUs;

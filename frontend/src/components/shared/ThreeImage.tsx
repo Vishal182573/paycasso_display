@@ -1,13 +1,16 @@
 "use client"
-import React, { useState } from 'react'
-import { motion} from 'framer-motion'
-import Image from 'next/image'
-import { PHONE } from '@/public'
-import { ArrowRight } from 'lucide-react'
+import React from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { PHONE } from '@/public';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const AboutSection = () => {
-  const [hoveredButton, setHoveredButton] = useState<any>()
-
   // Animation variants for the phone image
   const phoneVariants = {
     initial: { opacity: 0, x: -20, rotateY: -20 },
@@ -28,7 +31,7 @@ const AboutSection = () => {
         ease: "easeInOut"
       }
     }
-  }
+  };
 
   // Animation variants for the text content
   const textVariants = {
@@ -41,7 +44,7 @@ const AboutSection = () => {
         staggerChildren: 0.2
       }
     }
-  }
+  };
 
   // Animation variants for individual text elements
   const itemVariants = {
@@ -51,19 +54,28 @@ const AboutSection = () => {
       y: 0,
       transition: { duration: 0.5 }
     }
-  }
+  };
 
-  // Button hover animation variants
-  const buttonVariants = {
-    initial: { backgroundColor: "rgba(0,0,0,0)" },
-    hover: { 
-      backgroundColor: "rgba(17,24,39,1)",
-      transition: { duration: 0.2 }
+  const accordionItems = [
+    {
+      value: "item-1",
+      trigger: "How Paycasso works?",
+      content: "Paycasso simplifies global subscription payments by converting your fiat currency to USDC stablecoin. Fund your wallet, manage transactions, and pay securely—all in one streamlined platform."
+    },
+    {
+      value: "item-2",
+      trigger: "Paycasso's Advantages",
+      content: "With Paycasso, enjoy blockchain security, transparent pricing, and smooth payments while earning rewards on spending. Skip card requirements and access your favorite subscriptions effortlessly."
+    },
+    {
+      value: "item-3",
+      trigger: "Vision and Mission of Paycasso",
+      content: "Democratize subscription access through crypto, making global digital services available to all. Building a borderless digital ecosystem where everyone can access subscription services without geographical or socioeconomic barriers."
     }
-  }
+  ];
 
   return (
-    <div className='bg-black w-full flex flex-col lg:flex-row items-center justify-center min-h-screen text-white'>
+    <div className="bg-black w-full flex flex-col lg:flex-row items-center justify-center min-h-screen text-white">
       <div className="px-6 lg:px-24 py-12 gap-12 max-w-7xl flex flex-col lg:flex-row items-center justify-between font-semibold">
         <motion.div
           className="lg:w-1/3"
@@ -105,42 +117,30 @@ const AboutSection = () => {
               className="text-gray-400"
               variants={itemVariants}
             >
-              Id eleifend quis urna tellus tempor facilisis at semper ac.
-              Interdum tortor ut ac ullamcorper ac et facilisis.
+              Revolutionizing subscription management with blockchain-powered, user-friendly financial solutions.
             </motion.p>
           </motion.div>
 
-          <motion.div className="space-y-4">
-            {[
-              "Vision and Mission of Paycasso",
-              "Paycasso's Advantages",
-              "How Paycasso works?"
-            ].map((item, index) => (
-              <motion.button
-                key={index}
-                variants={buttonVariants}
-                initial="initial"
-                whileHover="hover"
-                className="w-full flex items-center justify-between p-4 border-t border-gray-800 transition-colors"
-                onHoverStart={() => setHoveredButton(index)}
-                onHoverEnd={() => setHoveredButton(null)}
+          <Accordion type="single" collapsible className="w-full">
+            {accordionItems.map((item) => (
+              <AccordionItem 
+                key={item.value} 
+                value={item.value}
+                className="border-t border-gray-800 px-0 "
               >
-                <span>{item}</span>
-                <motion.div
-                  animate={{
-                    x: hoveredButton === index ? 5 : 0,
-                    transition: { duration: 0.2 }
-                  }}
-                >
-                  <ArrowRight size={20} className="text-gray-400" />
-                </motion.div>
-              </motion.button>
+                <AccordionTrigger className="hover:bg-gray-900 px-4 py-4 text-left">
+                  {item.trigger}
+                </AccordionTrigger>
+                <AccordionContent className="px-4 text-gray-400">
+                  {item.content}
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </motion.div>
+          </Accordion>
         </motion.div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AboutSection
+export default AboutSection;
