@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import NavbarUser from './NavbarUser';
 // import Image from 'next/image';
 // import { LOGO } from '@/public';
 
@@ -100,6 +102,7 @@ const Navbar: React.FC = () => {
             <h1>Paycasso</h1>
           </Link>
         </motion.div>
+        <div className="hidden md:flex">
           <motion.div
             className="flex gap-28 font-semibold text-sm"
             variants={linksVariants}
@@ -109,20 +112,18 @@ const Navbar: React.FC = () => {
           >
             <NavLink href="/">Home</NavLink>
             <NavLink href="/about-wallet">About wallet</NavLink>
-            <NavLink href="/how-it-works">How it works?</NavLink>
+            <NavLink href="/howItWorks">How it works?</NavLink>
             <NavLink href="/documentation">Documentation</NavLink>
           </motion.div>
-          <motion.button
-            variants={buttonVariants}
-            initial="initial"
-            animate="animate"
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="bg-gray-700 text-white px-6 py-2 rounded-full text-sm hover:bg-gray-600 transition-colors font-bold border-white"
-            onClick={onContactClick}
-            type="button"
-          >
-            Sign Up
-          </motion.button>
+        </div>
+        <motion.div
+          variants={buttonVariants}
+          initial="initial"
+          animate="animate"
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <NavbarUser />
+        </motion.div>
         <div className="md:hidden"> 
           <button onClick={toggleMobileMenu} className="text-white">
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -140,18 +141,8 @@ const Navbar: React.FC = () => {
           <div className="flex flex-col gap-4">
             <NavLink href="/" onClick={toggleMobileMenu}>Home</NavLink>
             <NavLink href="/about-wallet" onClick={toggleMobileMenu}>About wallet</NavLink>
-            <NavLink href="/how-it-works" onClick={toggleMobileMenu}>How it works?</NavLink>
+            <NavLink href="/howItWorks" onClick={toggleMobileMenu}>How it works?</NavLink>
             <NavLink href="/documentation" onClick={toggleMobileMenu}>Documentation</NavLink>
-            <button
-              className="bg-gradient-dark-tr text-white px-6 py-2 rounded-full text-sm hover:bg-gray-600 transition-colors"
-              onClick={() => {
-                onContactClick();
-                toggleMobileMenu();
-              }}
-              type="button"
-            >
-              Sign Up
-            </button>
           </div>
         </motion.div>
       )}
